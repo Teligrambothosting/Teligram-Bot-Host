@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head><title>Telegram Bot Hosting</title></head>
+  <body style="text-align:center;margin-top:50px;">
+    <h2>Create Telegram Bot</h2>
+    <input id="Teligram Bot Host" placeholder="Bot Name"><br><br>
+    <input id="8108628152:AAHB8bfOcsd4j1xhA9mZGgPM4KS7SY6nF1Q" placeholder="Bot Token"><br><br>
+    <button onclick="createBot()">Create Bot</button>
+    <pre id="result"></pre>
+    <script>
+      async function createBot(){
+        const name=document.getElementById('name').value;
+        const token=document.getElementById('token').value;
+        const res=await fetch('https://your-backend.onrender.com/api/bots',{
+          method:'POST',
+          headers:{'Content-Type':'application/json'},
+          body:JSON.stringify({name,token})
+        });
+        const data=await res.json();
+        document.getElementById('result').innerText=JSON.stringify(data,null,2);
+      }
+    </script>
+  </body>
+</html>
